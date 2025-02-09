@@ -1,0 +1,33 @@
+.start {
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.alert {
+  margin-bottom: 10px;
+}
+
+.consumption {
+  margin-bottom: 10px;
+  margin-top: 10px;
+  font-size: 20px;
+}
+
+.error {
+  color: red;
+}
+
+.fileContent {
+  max-height: 150px;
+  overflow: auto;
+}
+
+.errorContent {
+  max-height: 500px;
+  overflow: auto;
+  min-width: 200px;
+}
+
+.password {
+  padding-left: 10px;
+}
