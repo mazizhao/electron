@@ -5,40 +5,29 @@ import icon from '../../resources/icon.png?asset'
 // 拨号连接
 const { exec } = require('child_process');
 
-
-function createSecondWindow() {
-  // 创建第二个窗口，用于嵌入其他页面
-  const secondWindow = new BrowserWindow({
-      width: 800,
-      height: 800,
-      webPreferences: {
-          nodeIntegration: true, // 注意：出于安全考虑，最好关闭 nodeIntegration 并使用预加载脚本来暴露 API
-          contextIsolation: false // 同上，最好改为 true 并使用 contextBridge 或 preload 脚本
-      }
-  });
-  secondWindow.loadURL('https://tv.sohu.com/v/MjAyMjA5MjUvbjYwMTIxNDE4OC5zaHRtbA==.html'); // 加载外部网页或本地 HTML 文件
-}
-
 function createWindow() {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    width: 900,
+    width: 1300,
     height: 800,
     show: false,
     autoHideMenuBar: true,
     ...(process.platform === 'linux' ? { icon } : {}),
     webPreferences: {
       preload: join(__dirname, '../preload/index.js'),
-      sandbox: false,
-      contentSecurityPolicy: "default-src *; script-src'self' 'unsafe-inline' 'unsafe-eval'; style-src'self' 'unsafe-inline'",
+      webSecurity: false, // 关闭同源策略
+      nodeIntegration: true,
+      contextIsolation: false, 
+      // contentSecurityPolicy: "default-src 'self'; connect-src 'self' https://www.yuque.com;"
+      contentSecurityPolicy: "default-src 'self'; connect-src 'self' https://www.yuque.com;"
     }
   })
 
   mainWindow.on('ready-to-show', () => {
     mainWindow.show()
   })
-
-  mainWindow.webContents.openDevTools()
+// 控制台页面
+  // mainWindow.webContents.openDevTools()
   // // 禁用缓存
   // win.webContents.session.clearCache()
 
@@ -100,23 +89,12 @@ app.whenReady().then(() => {
       return setTimeout(() => {
         return 1
       }, 1000);
-      // const command = `rasdial "${connectionName}" "${username}" "${password}"`;
-      // return exec(command, { encoding: 'utf-8' }, (error, stdout, stderr) => {
-      //   if (error) {
-      //     return 2
-      //   }
-      //   if (stderr) {
-      //     return 3
-      //   }
-      //   return 1
-      // });
     } catch (error) {
       return 4
     }
   });
 
   createWindow()
-  // createSecondWindow();
 
   app.on('activate', function () {
     // On macOS it's common to re-create a window in the app when the
@@ -124,9 +102,6 @@ app.whenReady().then(() => {
     if (BrowserWindow.getAllWindows().length === 0) createWindow()
   })
 })
-
-
-
 
 // explicitly with Cmd + Q.
 app.on('window-all-closed', () => {
