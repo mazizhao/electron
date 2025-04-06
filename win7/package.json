@@ -1,0 +1,46 @@
+{
+  "name": "ls",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "./main.js",
+  "description": "批处理",
+  "author": "xyxx",
+  "scripts": {
+    "start": "electron .",
+    "dev": "nodemon --watch main.js --exec electron .",
+    "build": "electron-builder --win --ia32",
+    "package:win7": "electron-packager . --platform=win32 --arch=ia32 --out=dist --overwrite --win32metadata.requested-execution-level=asInvoker",
+    "dist": "electron-builder",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "build": {
+    "appId": "your.app.id",
+    "productName": "批处理",
+    "mac": {
+      "category": "your.app.category.type"
+    },
+    "win": {
+      "target": [
+        "nsis"
+      ]
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ]
+    }
+  },
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.8.4",
+    "bootstrap": "^3.4.1",
+    "node-netstat": "^1.9.0",
+    "systeminformation": "4.0.0",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "electron": "^9.4.4",
+    "electron-builder": "20.38.2"
+  }
+}

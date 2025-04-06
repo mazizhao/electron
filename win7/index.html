@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta http-equiv="Content-Security-Policy"
+    content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline';connect-src 'self' https://www.yuque.com;" />
+  <link rel="stylesheet" href="./bootstrap.min.css">
+  <link rel="stylesheet" href="./index.css">
+  <title>批处理</title>
+</head>
+
+<body>
+  <div class="content">
+    <div class="left-content">
+      <button type="button" class="btn btn-primary" id="start">开始</button>
+      <div class="time">耗时：<span id="lossTime">--</span></div>
+
+      <form id="form">
+        <div class="form-group">
+          <label for="name">宽带连接名称：</label>
+          <input id="name" type="text" class="form-control" value="宽带连接">
+        </div>
+        <div class=" form-group">
+          <label for="maxTime">时间上限：</label>
+          <div class="el-form">
+            <input id="maxTime" type="number" class="form-control" value="10" min="1" max="9999999" />
+            <div class="unit">分钟</div>
+          </div>
+        </div>
+        <div class=" form-group">
+          <label for="bps">流量上限：</label>
+          <div class="el-form">
+            <input id="bps" type="number" class="form-control" value="30" min="1" max="9999999" />
+            <div class="unit">MB</div>
+          </div>
+        </div>
+        <div class=" form-group">
+          <label for="maxTvideoUrlime">视频链接：</label>
+          <input id="videoUrl" type="text" class="form-control" value="https://www.douyin.com/?recommend=1" />
+        </div>
+      </form>
+      <div class="consumption">
+        当前正在消耗流量的账号：
+        <span id="curname"></span>
+      </div>
+      <div class="consumption">
+        累计消耗流量：<span id="network">--</span>MB
+      </div>
+      <!-- 选择文件 -->
+      <div>
+        <div class="fileMax">文件最大为5M</div>
+        <input id="upload" name="file" type="file" accept=".xlsx,.xls"/>
+        <div id="output"></div>
+      </div>
+    </div>
+    <div class="right-content">
+      <div class="error">错误账号</div>
+      <button id="error-btn" type="button" class="btn btn-light">下载错误账号文件</button>
+      <div class="bg" id="errorList"> </div>
+    </div>
+  </div>
+  <div id="timeover">
+    文件已损坏
+  </div>
+
+</body>
+
+<script src="./renderer.js"></script>
+
+</html>

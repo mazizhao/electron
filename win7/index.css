@@ -1,0 +1,88 @@
+.content {
+    min-height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.fileMax {
+    padding: 10px 0;
+    color: red;
+}
+
+.start {
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.alert {
+    margin-bottom: 10px;
+}
+
+.consumption {
+    margin-bottom: 10px;
+    margin-top: 10px;
+    font-size: 20px;
+}
+
+.left-content {
+    min-height: 600px;
+    padding: 40px;
+}
+
+.right-content {
+    min-height: 600px;
+    min-width: 400px;
+    padding: 40px;
+
+}
+
+.error {
+    color: red;
+}
+
+.fileContent {
+    max-height: 150px;
+    overflow: auto;
+}
+
+.errorContent {
+    max-height: 500px;
+    overflow: auto;
+    min-width: 200px;
+}
+
+.password {
+    padding-left: 10px;
+}
+
+.unit {
+    min-width: 46px;
+    text-align: right;
+}
+
+.el-form {
+    display: flex;
+    align-items: center;
+
+}
+
+.right-content {
+    display: none;
+}
+
+#error-btn {
+    margin: 8px 0;
+}
+
+#timeover {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    color: red;
+}
+
+.time {
+    padding: 20px 0;
+}
